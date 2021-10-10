@@ -19,7 +19,7 @@ public class ProjectsPage {
 
     public ProjectDetailsPage openProject(String name) {
         $$("a.defect-title").find(Condition.text(name)).click();
-        return new ProjectDetailsPage();
+        return new ProjectDetailsPage().isOpened();
     }
 
 }
