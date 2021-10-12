@@ -1,6 +1,8 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.WebDriverRunner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
@@ -13,5 +15,10 @@ public class BaseTest {
         Configuration.startMaximized = true;
         Configuration.headless = false;
         Configuration.clickViaJs = false;
+    }
+
+    @AfterMethod
+    public void closeDriver() {
+        WebDriverRunner.closeWebDriver();
     }
 }
