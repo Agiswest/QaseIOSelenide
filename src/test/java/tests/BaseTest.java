@@ -14,12 +14,15 @@ public class BaseTest {
     public void setup() {
         Configuration.timeout = 10000;
         Configuration.browser = "chrome";
-        Configuration.baseUrl = PropertyReader.getProperty("qase.url");
+        Configuration.baseUrl = System.getenv().getOrDefault("QASE_URL",
+                PropertyReader.getProperty("qase.url"));
         Configuration.startMaximized = true;
         Configuration.headless = false;
         Configuration.clickViaJs = false;
-        user = PropertyReader.getProperty("qase.user");
-        password = PropertyReader.getProperty("qase.pass");
+        user = System.getenv().getOrDefault("QASE_USER",
+                PropertyReader.getProperty("qase.user"));
+        password = System.getenv().getOrDefault("QASE_PASS",
+                PropertyReader.getProperty("qase.pass"));
     }
 
     @AfterMethod
