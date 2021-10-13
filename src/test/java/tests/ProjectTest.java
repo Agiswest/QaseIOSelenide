@@ -13,7 +13,7 @@ public class ProjectTest extends BaseTest {
         Project project = ProjectFactory.get();
         boolean projectWasCreated = new LoginPage()
                 .open()
-                .login("maximus200064@mail.ru", "testPassMax1")
+                .login(user, password)
                 .createProject()
                 .addProjectName(project)
                 .projectIsCreated();

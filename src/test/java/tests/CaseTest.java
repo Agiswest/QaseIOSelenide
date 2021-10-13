@@ -12,7 +12,7 @@ public class CaseTest extends BaseTest {
         Case caseFactory = CaseFactory.get();
         new LoginPage()
                 .open()
-                .login("maximus200064@mail.ru", "testPassMax1")
+                .login(user, password)
                 .openProject("AQA_PROJECT_DO_NOT_TOUCH")
                 .createNewCase()
                 .fillInfoOfCase(caseFactory);
