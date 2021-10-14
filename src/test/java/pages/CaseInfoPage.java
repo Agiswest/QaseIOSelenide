@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import models.Case;
 import org.openqa.selenium.By;
 
@@ -12,6 +13,7 @@ public class CaseInfoPage {
     private static final String DROP_DOWN_CSS = "#%sGroup>div";
     private static final String DROP_DOWN_OPTIONS_XPATH = "//*[contains(@id, 'option')]";
 
+    @Step("Fill information of test case")
     public ProjectDetailsPage fillInfoOfCase(Case caseInfo) {
         $("#title").sendKeys(caseInfo.getTitle());
 

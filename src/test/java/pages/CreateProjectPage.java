@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import models.Project;
 import org.apache.commons.lang.StringUtils;
 
@@ -8,6 +9,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class CreateProjectPage {
 
+    @Step("Add name and description for project")
     public ProjectDetailsPage addProjectName(Project project) {
         $("#inputTitle").sendKeys(project.getProjectName());
         if(StringUtils.isNotEmpty(project.getProjectCode())) {

@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ex.ElementNotFound;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -28,6 +29,7 @@ public class ProjectDetailsPage {
         return this;
     }
 
+    @Step("Click on create new case button")
     public CaseInfoPage createNewCase() {
         try {
             $$("a.btn").find(Condition.text("Case")).click();
