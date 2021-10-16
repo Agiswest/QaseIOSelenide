@@ -14,9 +14,7 @@ public class CaseTest extends BaseTest {
                 .open()
                 .login(user, password)
                 .openProject("AQA_PROJECT_DO_NOT_TOUCH")
-                .createNewCase()
+                .createCase()
                 .fillInfoOfCase(caseFactory);
-
-
     }
 }

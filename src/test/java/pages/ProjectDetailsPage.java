@@ -3,16 +3,18 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ex.ElementNotFound;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selectors.byText;
 
-public class ProjectDetailsPage {
+public class ProjectDetailsPage extends BasePage {
+    private static final String ALERT_MESSAGE_LOCATOR = "//*[@class='alert-message']";
+    private static final String ALL_BUTTONS = "a.btn";
+    private static final String CREATE_CASE_LOCATOR = "#create-case-button";
 
     public boolean projectIsCreated() {
         try {
-            $(By.xpath("//*[@class='alert-message']"))
+            $x(ALERT_MESSAGE_LOCATOR)
                     .shouldHave(Condition.text("was created successfully"));
             return true;
         } catch (ElementNotFound e) {
@@ -21,21 +23,19 @@ public class ProjectDetailsPage {
     }
 
     public ProjectDetailsPage isOpened() {
-        try {
-            $$("a.btn").find(Condition.text("Case")).shouldBe(Condition.visible);
-        } catch (Exception e) {
-            $$("a.btn").find(Condition.text("Create new case")).shouldBe(Condition.visible);
-        }
+        $(LOADER_LOCATOR).shouldNot(Condition.exist);
         return this;
     }
 
-    @Step("Click on create new case button")
-    public CaseInfoPage createNewCase() {
-        try {
-            $$("a.btn").find(Condition.text("Case")).click();
-        } catch (Exception e) {
-            $$("a.btn").find(Condition.text("Create new case")).click();
-        }
-        return new CaseInfoPage();
+    @Step("Click on button to create new case")
+    public CaseFormPage createFirstCase() {
+        $(byText("Create new case")).click();
+        return new CaseFormPage().isOpened();
+    }
+
+    @Step("Create one more case")
+    public CaseFormPage createCase() {
+        $(CREATE_CASE_LOCATOR).click();
+        return new CaseFormPage().isOpened();
     }
 }

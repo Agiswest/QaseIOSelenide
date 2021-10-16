@@ -27,6 +27,6 @@ public class CreateProjectPage {
             }
         }
         $(byText("Create project")).click();
-        return new ProjectDetailsPage();
+        return new ProjectDetailsPage().isOpened();
     }
 }
