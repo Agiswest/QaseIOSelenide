@@ -9,14 +9,14 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class CreateProjectPage {
 
-    @Step("Add name and description for project")
+    @Step("Add title and description for project")
     public ProjectDetailsPage addProjectName(Project project) {
-        $("#inputTitle").sendKeys(project.getProjectName());
-        if(StringUtils.isNotEmpty(project.getProjectCode())) {
-            $("#inputCode").sendKeys(project.getProjectCode());
+        $("#inputTitle").sendKeys(project.getTitle());
+        if(StringUtils.isNotEmpty(project.getCode())) {
+            $("#inputCode").sendKeys(project.getCode());
         }
         $("#inputDescription").sendKeys(project.getDescription());
-        switch (project.getAccessType()) {
+        switch (project.getAccess()) {
             case "Private": {
                 $("#private-access-type").click();
                 break;

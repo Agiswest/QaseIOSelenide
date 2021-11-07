@@ -7,7 +7,11 @@ public class ProjectFactory {
 
     public static Project get() {
         faker = new Faker();
-        return new Project(faker.name().title(), "",
-                faker.backToTheFuture().quote(), "Public");
+        return Project.builder()
+                .title(faker.name().title())
+                .code(faker.name().lastName().toUpperCase())
+                .description(faker.backToTheFuture().quote())
+                .access("all")
+                .build();
     }
 }

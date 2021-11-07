@@ -2,9 +2,10 @@ package tests;
 
 import models.Project;
 import models.ProjectFactory;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
+
+import static org.testng.Assert.assertTrue;
 
 public class ProjectTest extends BaseTest {
 
@@ -17,7 +18,6 @@ public class ProjectTest extends BaseTest {
                 .createProject()
                 .addProjectName(project)
                 .projectIsCreated();
-        Assert.assertTrue(projectWasCreated, "Project wasn't created");
-
+        assertTrue(projectWasCreated, "Project wasn't created");
     }
 }

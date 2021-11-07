@@ -1,5 +1,6 @@
 package tests;
 
+import adapters.ProjectAdapter;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -11,6 +12,7 @@ import utils.PropertyReader;
 public class BaseTest {
     String user;
     String password;
+    ProjectAdapter projectAdapter;
 
     @BeforeMethod
     public void setup() {
@@ -25,6 +27,7 @@ public class BaseTest {
                 PropertyReader.getProperty("qase.user"));
         password = System.getenv().getOrDefault("QASE_PASS",
                 PropertyReader.getProperty("qase.pass"));
+        projectAdapter = new ProjectAdapter();
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
                 .includeSelenideSteps(false)
                 .screenshots(true));
